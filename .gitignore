@@ -1,0 +1,10 @@
+# Local configurations
+.env
+
+# IDE
+.idea/
+*.iml
+
+# System
+.DS_Store
+Thumbs.db
