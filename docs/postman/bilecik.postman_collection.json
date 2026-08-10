@@ -1,0 +1,170 @@
+{
+  "info": {
+    "_postman_id": "7729a0d7-c3a7-468f-b87e-f0bbab0de3f2",
+    "name": "Bilecik",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "22747075"
+  },
+  "item": [
+    {
+      "name": "Events",
+      "item": [
+        {
+          "name": "AddEvent",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"New Event 7\",\r\n    \"description\": \"Materiał z płyty „Ghosts” w wersji na fortepian i elektronikę. Koncert bez przerwy, około 90 minut. Wejście na salę od 19:15, po rozpoczęciu obowiązuje wpuszczanie wyłącznie między utworami.\",\r\n    \"venue\": \"New Event Venue 7\",\r\n    \"city\": \"Gdynis\",\r\n    \"category\": \"Standup\",\r\n    \"startsAt\": \"2026-01-01T21:00:00Z\",\r\n    \"timezone\": \"Europe/Warsaw\",\r\n    \"capacity\": 420,\r\n    \"durationMinutes\": 90,\r\n    \"minAge\": 12\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/events",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "events"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateEvent",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Hania Rani — Ghosts V3 UPDATE\",\r\n    \"description\": \"Materiał z płyty „Ghosts” w wersji na fortepian i elektronikę. Koncert bez przerwy, około 90 minut. Wejście na salę od 19:15, po rozpoczęciu obowiązuje wpuszczanie wyłącznie między utworami.\",\r\n    \"venue\": \"Klub Stodoła UPDATE\",\r\n    \"city\": \"Warszawa UPDATE\",\r\n    \"category\": \"Koncert\",\r\n    \"startsAt\": \"2026-09-12T18:00:00Z\",\r\n    \"timezone\": \"Europe/Warsaw\",\r\n    \"capacity\": 420,\r\n    \"durationMinutes\": 90,\r\n    \"minAge\": 12\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/events/3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "events",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetEventById",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/events/2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "events",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetEvents",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/events?city=warszawa",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "events"
+              ],
+              "query": [
+                {
+                  "key": "city",
+                  "value": "warszawa"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteEvent",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/events/4",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "events",
+                "4"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
