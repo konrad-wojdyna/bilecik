@@ -6,6 +6,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "events")
@@ -42,6 +44,9 @@ public class Event {
 
     private Integer minAge;
 
+    @OneToMany(mappedBy = "event")
+    private final List<TicketPool> ticketPools = new ArrayList<>();
+
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
@@ -51,6 +56,11 @@ public class Event {
     private Instant updatedAt;
 
     public Event(){}
+
+    public void addTicketPool(TicketPool pool){
+        ticketPools.add(pool);
+        pool.setEvent(this);
+    }
 
     public Long getId() {
         return id;
@@ -134,6 +144,10 @@ public class Event {
 
     public void setMinAge(Integer minAge) {
         this.minAge = minAge;
+    }
+
+    public List<TicketPool> getTicketPools() {
+        return  ticketPools;
     }
 
     public Instant getCreatedAt() {
