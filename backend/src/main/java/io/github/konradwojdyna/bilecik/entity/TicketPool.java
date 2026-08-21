@@ -6,7 +6,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "ticket_pools")
@@ -29,7 +28,7 @@ public class TicketPool {
     private Integer quantity;
 
     @Column(nullable = false)
-    private Integer sold;
+    private Integer sold = 0;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "event_id", nullable = false)
