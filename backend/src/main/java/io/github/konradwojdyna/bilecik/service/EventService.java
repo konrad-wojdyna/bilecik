@@ -23,7 +23,6 @@ public class EventService {
         this.eventRepository = eventRepository;
     }
 
-
     @Transactional(readOnly = true)
    public Page<EventResponse> getEvents(
            String city,
