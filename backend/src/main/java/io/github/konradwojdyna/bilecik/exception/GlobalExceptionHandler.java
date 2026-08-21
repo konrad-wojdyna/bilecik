@@ -54,6 +54,57 @@ public class GlobalExceptionHandler {
         return problemDetail;
     }
 
+    @ExceptionHandler(TicketPoolNotFoundException.class)
+    public ProblemDetail handleTicketPoolNotFoundException(
+            TicketPoolNotFoundException ex,
+            HttpServletRequest request
+    ){
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
+                HttpStatus.NOT_FOUND,
+                ex.getMessage()
+        );
+
+        problemDetail.setTitle("Ticket pool not found");
+        problemDetail.setType(URI.create("https://bilecik.dev/problems/ticketpool-not-found"));
+        problemDetail.setInstance(URI.create(request.getRequestURI()));
+
+        return problemDetail;
+    }
+
+    @ExceptionHandler(TicketPoolNameExistsException.class)
+    public ProblemDetail handleTicketPoolNameExistsException(
+            TicketPoolNameExistsException ex,
+            HttpServletRequest request
+    ){
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
+                HttpStatus.CONFLICT,
+                ex.getMessage()
+        );
+
+        problemDetail.setTitle("Ticket pool name exists");
+        problemDetail.setType(URI.create("https://bilecik.dev/problems/ticket-pool-name-exists"));
+        problemDetail.setInstance(URI.create(request.getRequestURI()));
+
+        return  problemDetail;
+    }
+
+    @ExceptionHandler(TicketPoolSoldOutException.class)
+    public ProblemDetail handleTicketPoolSoldOutException(
+            TicketPoolSoldOutException ex,
+            HttpServletRequest request
+    ){
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
+                HttpStatus.CONFLICT,
+                ex.getMessage()
+        );
+
+        problemDetail.setTitle("Ticket pool is sold out");
+        problemDetail.setType(URI.create("https://bilecik.dev/problems/ticket-pool-sold-out"));
+        problemDetail.setInstance(URI.create(request.getRequestURI()));
+
+        return  problemDetail;
+    }
+
     @ExceptionHandler(PropertyReferenceException.class)
     public ProblemDetail handlePropertyReferenceException(
             PropertyReferenceException ex,
