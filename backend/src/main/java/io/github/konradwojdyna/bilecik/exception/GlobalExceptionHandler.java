@@ -37,6 +37,7 @@ public class GlobalExceptionHandler {
         return problemDetail;
     }
 
+
     @ExceptionHandler(EventNotFoundException.class)
     public ProblemDetail handleEventNotFoundException(
             EventNotFoundException ex,
@@ -69,6 +70,25 @@ public class GlobalExceptionHandler {
         problemDetail.setInstance(URI.create(request.getRequestURI()));
 
         return problemDetail;
+    }
+
+    @ExceptionHandler(EmailAlreadyExistsException.class)
+    public ProblemDetail handleEmailAlreadyExistsException(
+            EmailAlreadyExistsException ex,
+            HttpServletRequest request
+    ){
+
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
+                HttpStatus.CONFLICT,
+                ex.getMessage()
+        );
+
+        problemDetail.setTitle("Email already exists");
+        problemDetail.setType(URI.create("https://bilecik.dev/problems/email-already-exists"));
+        problemDetail.setInstance(URI.create(request.getRequestURI()));
+
+        return  problemDetail;
+
     }
 
     @ExceptionHandler(TicketPoolNameExistsException.class)
