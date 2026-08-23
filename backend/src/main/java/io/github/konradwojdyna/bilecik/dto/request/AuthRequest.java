@@ -12,6 +12,6 @@ public record AuthRequest(
         String email,
 
         @NotBlank(message = "Password is required")
-        @Size(min = 6, max = 255, message = "Password is min 6 and 255 length max")
+        @Size(min = 8, max = 255, message = "Password is min 8 and 255 length max")
         String password
 ) {}

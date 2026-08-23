@@ -6,6 +6,7 @@ import io.github.konradwojdyna.bilecik.dto.response.AuthResponse;
 import io.github.konradwojdyna.bilecik.entity.User;
 import io.github.konradwojdyna.bilecik.exception.EmailAlreadyExistsException;
 import io.github.konradwojdyna.bilecik.repository.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,9 +16,12 @@ import java.util.Locale;
 public class AuthService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public AuthService(UserRepository userRepository) {
+    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder)
+    {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Transactional
@@ -31,8 +35,10 @@ public class AuthService {
 
        User newUser = new User();
 
+       String hashPassword =  passwordEncoder.encode(request.password());
+
        newUser.setEmail(normalizedEmail);
-       newUser.setPasswordHash(request.password());
+       newUser.setPasswordHash(hashPassword);
 
        User savedUser = userRepository.save(newUser);
 
